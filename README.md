@@ -1,2 +1,3 @@
-# sort_c
-Sorting algorithms in C language
+# Sorting algorithms in C language
+
+## Selection sort

@@ -12,9 +12,7 @@ int *generisi_niz(int n)
     }
     srand((unsigned int)time(NULL));
     for (int i = 0; i < n; i++)
-    {
         niz[i] = rand() % 100 + 1;
-    }
     return niz;
 }
 
@@ -25,32 +23,21 @@ void ispisi_niz(int *niz, int n)
     {
         printf("%d", niz[i]);
         if (i < n - 1)
-        {
             printf(", ");
-        }
     }
     printf(" ]\n");
 }
 
-void selection_sort(int *niz, int n)
+void bubble_sort(int *arr, int n)
 {
     for (int i = 0; i < n - 1; i++)
-    {
-        int idx_min = i;
-        for (int j = i + 1; j < n; j++)
-        {
-            if (niz[j] < niz[idx_min])
+        for (int j = 0; j < n - i - 1; j++)
+            if (arr[j] > arr[j + 1])
             {
-                idx_min = j;
+                int temp   = arr[j];
+                arr[j]     = arr[j + 1];
+                arr[j + 1] = temp;
             }
-        }
-        if (idx_min != i)
-        {
-            int temp = niz[i];
-            niz[i] = niz[idx_min];
-            niz[idx_min] = temp;
-        }
-    }
 }
 
 int main(void)
@@ -65,7 +52,7 @@ int main(void)
     int *niz = generisi_niz(n);
     printf("\nNasumicno generisan niz (%d elemenata):\n", n);
     ispisi_niz(niz, n);
-    selection_sort(niz, n);
+    bubble_sort(niz, n);
     printf("\nNiz nakon sortiranja izborom (Selection Sort):\n");
     ispisi_niz(niz, n);
     free(niz);
